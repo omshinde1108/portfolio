@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OM VILAS SHINDE | AI & Data Science Student | Developer</title>
+<meta name="description" content="OM VILAS SHINDE is a final-year B.E. Artificial Intelligence and Data Science student interested in AI, Machine Learning, Data Science, software development and modern web technologies.">
+<meta property="og:title" content="OM VILAS SHINDE | AI & Data Science Student | Developer"><meta property="og:type" content="website">
+<meta property="og:description" content="Final-year B.E. AI & Data Science student building intelligent applications and modern web experiences.">
+<meta property="og:image" content="assets/images/hero.jpg">
+<link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<a class="skip" href="#home">Skip to content</a>
+<header id="nav"><nav class="wrap nav-in" aria-label="Main">
+  <a href="#home" class="logo" id="logo"></a>
+  <ul id="menu" class="menu"></ul>
+  <div class="nav-act"><a class="btn btn-p sm hide-m" href="#projects">View Projects</a><a class="btn btn-g sm hide-m" id="navResume" href="#resume">Resume</a>
+  <button id="theme" class="icon" aria-label="Toggle light/dark theme">◐</button>
+  <button id="burger" class="icon burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">☰</button></div>
+</nav></header>
+<main>
+<section id="home" class="hero"><canvas id="net" aria-hidden="true"></canvas>
+ <div class="wrap hero-in"><div>
+  <p class="eyebrow" id="hLabel"></p><h1 id="hTitle"></h1>
+  <p class="role">I'm an <span id="rotator"></span><span class="caret">|</span></p>
+  <p class="lead" id="hText"></p>
+  <div class="cta"><a class="btn btn-p" href="#projects">View My Projects</a><a class="btn btn-g" data-resume download>Download Resume</a>
+  <a class="btn btn-t" data-link="github" target="_blank" rel="noopener">GitHub</a><a class="btn btn-t" data-link="linkedin" target="_blank" rel="noopener">LinkedIn</a></div></div>
+  <div class="term" aria-label="Developer terminal card"><div class="dots"><i></i><i></i><i></i></div><pre id="termText"></pre></div></div>
+ <div class="wrap stats" id="stats"></div></section>
+
+<section id="about" class="wrap sec reveal"><h2 class="h2">About Me</h2><div class="about">
+  <div class="photo" id="photo"></div>
+  <div><p id="aboutText" class="lead"></p><div class="tags" id="highlights"></div>
+  <dl class="card prof" id="profile"></dl></div></div></section>
+
+<section id="education" class="wrap sec reveal"><h2 class="h2">Education</h2><div id="eduList" class="timeline"></div></section>
+
+<section id="skills" class="wrap sec reveal"><h2 class="h2">Technical Skills</h2><div class="grid3" id="skillGrid"></div>
+  <h3 class="h3">Focus Areas</h3><div class="tags" id="focus"></div>
+  <h3 class="h3" id="technologies">Technologies I've Worked With</h3><div class="tags" id="techs"></div></section>
+
+<section id="projects" class="wrap sec reveal"><h2 class="h2">Featured Projects</h2>
+  <p class="sub">Selected projects exploring AI, data, software and real-world problem solving.</p>
+  <div class="filters" id="filters" role="tablist"></div><p class="count" id="count" aria-live="polite"></p><div class="grid3 pgrid" id="pGrid"></div></section>
+
+<section id="experience" class="wrap sec reveal"><h2 class="h2">Experience</h2><div id="expList" class="timeline"></div></section>
+<section id="certifications" class="wrap sec reveal"><h2 class="h2">Certifications</h2><div id="certList" class="grid3"></div></section>
+<section id="achievements" class="wrap sec reveal"><h2 class="h2">Achievements</h2><div id="achList"></div></section>
+
+<section id="github" class="wrap sec reveal"><div class="card center"><p class="eyebrow">MY GITHUB</p><h2 class="h2">Building in Public</h2>
+  <p class="lead" id="ghText"></p><div class="stats-in" id="ghStats"></div>
+  <div class="cta c"><a class="btn btn-p" data-link="github" target="_blank" rel="noopener">View GitHub</a><a class="btn btn-g" data-link="githubRepos" target="_blank" rel="noopener">Explore Projects</a></div></div></section>
+
+<section id="resume" class="wrap sec reveal"><div class="card center"><h2 class="h2">My Resume</h2>
+  <p class="lead">Download my latest resume to learn more about my education, skills, projects and experience.</p>
+  <div class="cta c"><a class="btn btn-p" data-resume download>Download Resume</a><a class="btn btn-g" data-resume target="_blank" rel="noopener">View Resume</a></div>
+  <p class="note" id="resNote" hidden>Resume coming soon — add <code>assets/resume/resume.pdf</code>.</p></div></section>
+
+<section id="contact" class="wrap sec reveal"><h2 class="h2">Let's Connect</h2>
+ <p class="sub">Interested in working together, discussing a project, or exploring an opportunity? Feel free to get in touch.</p>
+ <div class="contact"><div class="card" id="cInfo"></div>
+ <form class="card" id="form" novalidate><label>Full Name<input name="name" required autocomplete="name"></label>
+  <label>Email<input name="email" type="email" required autocomplete="email"></label>
+  <label>Phone<input name="phone" type="tel" autocomplete="tel"></label>
+  <label>Subject<input name="subject" required></label>
+  <label>Message<textarea name="message" rows="5" required></textarea></label>
+  <button class="btn btn-p" type="submit">Send Message</button><p class="note" id="fErr" role="alert"></p></form></div></section>
+</main>
+
+<footer><div class="wrap foot"><div><strong id="fName"></strong><p class="eyebrow">AI & DATA SCIENCE STUDENT</p><p id="fTag" class="muted"></p></div>
+ <ul class="flinks" id="fLinks"></ul><div class="tags" id="fSocial"></div></div>
+ <p class="copy">© 2026 OM SHINDE. All Rights Reserved.</p></footer>
+<button id="top" class="icon top" aria-label="Back to top">↑</button><div id="toast" role="status" aria-live="polite"></div>
+
+<div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle"><div class="m-box">
+ <button id="mClose" class="icon m-x" aria-label="Close">✕</button>
+ <div class="m-gal"><div id="mStage" class="stage"></div><button id="mPrev" class="icon arr l" aria-label="Previous image">‹</button><button id="mNext" class="icon arr r" aria-label="Next image">›</button><span id="mCount" class="mc"></span><div id="mThumbs" class="thumbs"></div></div>
+ <div class="m-info"><p class="eyebrow" id="mCat"></p><h3 id="mTitle"></h3><p id="mDesc" class="muted"></p>
+ <h4>Technologies</h4><div class="tags" id="mTech"></div><h4>Key Features</h4><ul id="mFeat" class="feat"></ul><div class="cta" id="mLinks"></div></div></div></div>
+<div id="lightbox" class="lb"><button id="lbPrev" class="icon arr l" aria-label="Previous">‹</button><img id="lbImg" alt="Project image fullscreen"><button id="lbNext" class="icon arr r" aria-label="Next">›</button></div>
+<script src="js/config.js"></script><script src="js/projects.js"></script><script src="js/gallery.js"></script><script src="js/main.js"></script>
+</body></html>
