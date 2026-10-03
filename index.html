@@ -9,7 +9,81 @@
 <meta property="og:image" content="assets/images/hero.jpg">
 <link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/responsive.css">
+<style>
+:root{--bg:#07090f;--bg2:#0d1220;--card:rgba(255,255,255,.04);--bd:rgba(255,255,255,.09);--tx:#f1f5f9;--mu:#94a3b8;--accent:#22d3ee;--a2:#8b5cf6;--glass:rgba(7,9,15,.55);--r:16px}
+[data-theme=light]{--bg:#f8fafc;--bg2:#eef2f7;--card:#fff;--bd:rgba(15,23,42,.1);--tx:#0f172a;--mu:#475569;--accent:#0369a1;--a2:#6d28d9;--glass:rgba(248,250,252,.65)}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font:16px/1.65 Inter,system-ui,sans-serif;background:var(--bg);color:var(--tx);transition:background .3s,color .3s;overflow-x:hidden}
+h1,h2,h3,.logo,.stat b{font-family:"Space Grotesk",Inter,sans-serif;line-height:1.15}
+a{color:var(--accent);text-decoration:none}ul{list-style:none;padding:0}code{background:var(--card);padding:2px 6px;border-radius:6px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.skip{position:absolute;left:-999px}.skip:focus{left:10px;top:10px;z-index:99;background:var(--bg2);padding:8px}
+.wrap{width:min(1180px,92%);margin:auto}.sec{padding:90px 0}
+.h2{font-size:clamp(2rem,4vw,3rem);text-transform:uppercase;margin-bottom:28px}.h2::after{content:"";display:block;width:56px;height:3px;margin-top:12px;background:linear-gradient(90deg,var(--accent),var(--a2))}
+.h3{margin:36px 0 14px;font-size:1.1rem}h4{margin:18px 0 8px;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mu)}
+.sub,.muted,.note{color:var(--mu)}.sub{margin:-12px 0 28px}.lead{color:var(--mu);font-size:1.08rem;max-width:62ch}.center{text-align:center}.center .lead{margin:12px auto}
+.eyebrow{font-size:.75rem;letter-spacing:.18em;color:var(--accent);font-weight:600;text-transform:uppercase}
+.btn{display:inline-block;padding:12px 22px;border-radius:999px;font-weight:600;font-size:.9rem;border:1px solid transparent;cursor:pointer;transition:.25s;font-family:inherit}
+.btn.sm{padding:8px 16px;font-size:.8rem}.btn-p{background:linear-gradient(120deg,var(--accent),var(--a2));color:#fff}.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 24px -8px var(--accent)}
+.btn-g{border-color:var(--bd);color:var(--tx);background:var(--card)}.btn-g:hover{border-color:var(--accent);color:var(--accent)}.btn-t{color:var(--mu);padding-inline:10px}.btn-t:hover{color:var(--accent)}.disabled{opacity:.5;cursor:default}
+.icon{background:var(--card);border:1px solid var(--bd);color:var(--tx);width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1.1rem}.icon:hover{border-color:var(--accent)}
+header{position:fixed;inset:0 0 auto;z-index:50;background:transparent;backdrop-filter:blur(8px);transition:.3s}header.solid{background:var(--glass);border-bottom:1px solid var(--bd)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}.logo{font-weight:700;font-size:1.2rem;color:var(--tx)}
+.menu{display:flex;gap:22px}.menu a{color:var(--mu);font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;position:relative}
+.menu a.active,.menu a:hover{color:var(--tx)}.menu a.active::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--accent)}
+.nav-act{display:flex;gap:10px;align-items:center}.burger{display:none}
+.hero{position:relative;min-height:100vh;padding:120px 0 40px;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(60% 50% at 80% 20%,rgba(139,92,246,.18),transparent),radial-gradient(50% 50% at 10% 80%,rgba(34,211,238,.12),transparent);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(var(--bd) 1px,transparent 1px),linear-gradient(90deg,var(--bd) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent);opacity:.5}
+#net{position:absolute;inset:0;width:100%;height:100%}.hero-in{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+h1{font-size:clamp(2.6rem,6.5vw,5.2rem);text-transform:uppercase;margin:14px 0}h1 .line{display:block;animation:up .8s both;animation-delay:var(--d)}h1 .line:nth-child(2){color:var(--accent)}
+.role{font-size:1.2rem;margin-bottom:12px}#rotator{color:var(--accent);font-weight:600}.caret{animation:blink 1s infinite}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.cta.c{justify-content:center}
+.term{background:rgba(10,14,25,.85);color:#e2e8f0;border:1px solid var(--bd);border-radius:var(--r);box-shadow:0 30px 60px -30px #000;animation:float 6s ease-in-out infinite}
+.dots{display:flex;gap:6px;padding:12px 14px;border-bottom:1px solid var(--bd)}.dots i{width:10px;height:10px;border-radius:50%;background:#475569}.dots i:first-child{background:#ef4444}.dots i:nth-child(2){background:#eab308}.dots i:nth-child(3){background:#22c55e}
+.term pre{padding:18px;font:.85rem/1.7 ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap;color:#67e8f9}
+.stats{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:50px}
+.stat{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:18px;backdrop-filter:blur(6px)}.stat b{display:block;font-size:1.5rem;color:var(--accent)}.stat span{color:var(--mu);font-size:.85rem}
+.stats-in{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:26px;transition:.3s}.card:hover{border-color:var(--accent);transform:translateY(-4px)}.center.card:hover,.prof:hover,.tl:hover,form.card:hover{transform:none}
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.tag{font-size:.78rem;padding:5px 12px;border-radius:999px;border:1px solid var(--bd);background:var(--card);color:var(--tx);transition:.2s}.tag:hover{border-color:var(--accent);color:var(--accent)}
+.about{display:grid;grid-template-columns:320px 1fr;gap:40px}.photo{aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;border:1px solid var(--bd)}.photo img{width:100%;height:100%;object-fit:cover}
+.ph{width:100%;height:100%;min-height:160px;display:grid;place-content:center;text-align:center;background:repeating-linear-gradient(45deg,var(--card),var(--card) 12px,transparent 12px,transparent 24px),var(--bg2);color:var(--mu);font-weight:600;letter-spacing:.12em;font-size:.8rem}
+.prof{margin-top:26px;display:grid;gap:10px}.prof div{display:flex;gap:12px;border-bottom:1px solid var(--bd);padding-bottom:8px}.prof dt{min-width:100px;color:var(--mu)}.prof dd{margin:0}
+.timeline{border-left:2px solid var(--bd);padding-left:24px;display:grid;gap:20px}.badge{font-size:.7rem;letter-spacing:.12em;color:var(--accent);border:1px solid var(--accent);padding:3px 10px;border-radius:999px}
+.tl h3{margin:12px 0 4px}.period{color:var(--accent);font-weight:600;margin:6px 0}
+.skill .ico{width:44px;height:44px;border-radius:12px;display:grid;place-content:center;background:linear-gradient(120deg,var(--accent),var(--a2));color:#fff;font-weight:700;margin-bottom:12px}
+.filters{display:flex;flex-wrap:wrap;gap:10px}.chip{padding:8px 18px;border-radius:999px;background:var(--card);border:1px solid var(--bd);color:var(--mu);cursor:pointer;font:600 .78rem Inter;letter-spacing:.06em;text-transform:uppercase}.chip.on,.chip:hover{color:#fff;background:linear-gradient(120deg,var(--accent),var(--a2));border-color:transparent}
+.count{margin:18px 0;color:var(--mu);font-size:.9rem}.pcard{padding:0;overflow:hidden;display:flex;flex-direction:column}.cover{aspect-ratio:16/10;overflow:hidden;position:relative}.cover img{width:100%;height:100%;object-fit:cover;transition:transform .5s}.pcard:hover .cover img{transform:scale(1.07)}
+.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(0,0,0,.45));opacity:0;transition:.3s}.pcard:hover .cover::after{opacity:1}
+.pbody{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1;align-items:flex-start}.pbody .btn{margin-top:auto}.pbody .tags{margin-bottom:8px}
+.pop{animation:pop .45s both}.feat{display:grid;gap:6px}.feat li::before{content:"▹ ";color:var(--accent)}
+form label{display:block;margin-bottom:14px;font-size:.85rem;color:var(--mu)}input,textarea{width:100%;margin-top:6px;padding:12px;border-radius:10px;border:1px solid var(--bd);background:var(--bg2);color:var(--tx);font:inherit}
+.contact{display:grid;grid-template-columns:1fr 1.2fr;gap:22px}#cInfo p{margin:10px 0}.note{margin-top:12px;font-size:.85rem}#fErr{color:#f87171}
+footer{border-top:1px solid var(--bd);padding:50px 0 20px;background:var(--bg2)}.foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}.flinks{display:flex;gap:16px;flex-wrap:wrap}.flinks a{color:var(--mu)}.copy{text-align:center;color:var(--mu);font-size:.8rem;margin-top:30px}
+.top{position:fixed;right:20px;bottom:20px;z-index:40;opacity:0;pointer-events:none;transition:.3s}.top.show{opacity:1;pointer-events:auto}
+#toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,20px);background:var(--accent);color:#fff;padding:10px 20px;border-radius:999px;opacity:0;transition:.3s;z-index:90}#toast.show{opacity:1;transform:translate(-50%,0)}
+.reveal{opacity:0;transform:translateY(28px);transition:.7s}.reveal.in{opacity:1;transform:none}
+.modal{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}
+.m-box{position:relative;background:var(--bg2);border:1px solid var(--bd);border-radius:20px;max-width:1000px;width:100%;max-height:92vh;overflow:auto;display:grid;grid-template-columns:1.1fr 1fr;animation:pop .35s both}
+.m-x{position:absolute;right:12px;top:12px;z-index:3}.m-gal{position:relative;padding:20px}.stage{aspect-ratio:16/10;border-radius:12px;overflow:hidden;background:var(--bg)}.stage img{width:100%;height:100%;object-fit:cover;cursor:zoom-in}
+.arr{position:absolute;top:40%}.arr.l{left:30px}.arr.r{right:30px}.mc{position:absolute;right:34px;top:30px;font-size:.75rem;background:rgba(0,0,0,.55);color:#fff;padding:2px 10px;border-radius:99px}
+.thumbs{display:flex;gap:8px;margin-top:10px;overflow-x:auto}.thumbs button{width:64px;height:44px;flex:none;border:2px solid transparent;border-radius:8px;overflow:hidden;padding:0;background:var(--bg);cursor:pointer}.thumbs button.on{border-color:var(--accent)}.thumbs img,.thumbs .ph{width:100%;height:100%;object-fit:cover;min-height:0;font-size:0}
+.m-info{padding:30px 26px}.m-info h3{font-size:1.7rem;margin:8px 0 12px}
+.lb{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center}.lb.open{display:flex}.lb img{max-width:92vw;max-height:90vh;border-radius:8px}.lb .arr{top:50%}.lb .l{left:20px}.lb .r{right:20px}
+@keyframes up{from{opacity:0;transform:translateY(40px)}}@keyframes pop{from{opacity:0;transform:scale(.94) translateY(12px)}}@keyframes blink{50%{opacity:0}}@keyframes float{50%{transform:translateY(-10px)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+
+</style><style>
+@media(max-width:1024px){.hide-m{display:none}.about{grid-template-columns:260px 1fr}.hero-in{grid-template-columns:1fr}.term{max-width:480px}}
+@media(max-width:860px){.burger{display:block}
+ .menu{position:fixed;inset:68px 0 auto;flex-direction:column;gap:0;background:var(--bg2);border-bottom:1px solid var(--bd);padding:8px 5%;max-height:0;overflow:hidden;opacity:0;transition:.3s;visibility:hidden}
+ .menu.open{max-height:80vh;opacity:1;visibility:visible}.menu a{display:block;padding:14px 0}.menu a.active::after{display:none}
+ .about,.contact,.m-box{grid-template-columns:1fr}.photo{max-width:280px}.sec{padding:64px 0}}
+@media(max-width:480px){.grid3{grid-template-columns:1fr}.cta .btn{flex:1 1 100%;text-align:center}.btn-t{flex:1 1 40%}.prof div{flex-direction:column;gap:2px}.m-info{padding:20px}.arr.l{left:22px}.arr.r{right:22px}.stats{grid-template-columns:1fr 1fr}}
+@media(max-width:360px){h1{font-size:2.2rem}.wrap{width:94%}}
+
+</style>
 </head>
 <body>
 <a class="skip" href="#home">Skip to content</a>
@@ -81,5 +155,260 @@
  <div class="m-info"><p class="eyebrow" id="mCat"></p><h3 id="mTitle"></h3><p id="mDesc" class="muted"></p>
  <h4>Technologies</h4><div class="tags" id="mTech"></div><h4>Key Features</h4><ul id="mFeat" class="feat"></ul><div class="cta" id="mLinks"></div></div></div></div>
 <div id="lightbox" class="lb"><button id="lbPrev" class="icon arr l" aria-label="Previous">‹</button><img id="lbImg" alt="Project image fullscreen"><button id="lbNext" class="icon arr r" aria-label="Next">›</button></div>
-<script src="js/config.js"></script><script src="js/projects.js"></script><script src="js/gallery.js"></script><script src="js/main.js"></script>
+<script>
+// ===== EDIT YOUR DETAILS HERE =====
+const portfolioConfig = {
+  name: "OM VILAS SHINDE", shortName: "OM SHINDE",
+  title: "B.E. AI & Data Science Student",
+  rotatingTitles: ["AI & Data Science Student","AI/ML Enthusiast","Data Science Enthusiast","Data Analyst Enthusiast"],
+  location: "Nashik, Maharashtra, India",
+  email: "shindeom.info@gmail.com", phone: "+91 77983 98020",
+  github: "https://github.com/omshinde1108",
+  linkedin: "[ADD LINK]",
+  social: { instagram:"[ADD LINK]", behance:"[ADD LINK]", leetcode:"[ADD LINK]", kaggle:"[ADD LINK]" }, // unfilled ones are hidden
+  resume: "assets/resume/resume.pdf",
+  profileImage: "assets/images/profile.jpg",
+  hero: {
+    label: "FINAL YEAR B.E. AI & DATA SCIENCE STUDENT",
+    lines: ["Building Intelligent.","Digital.","Solutions."],
+    text: "Passionate about Artificial Intelligence, Machine Learning, Data Science and software development. I build practical projects that combine intelligent systems, data and modern web technologies."
+  },
+  stats: [
+    { value:"[PROJECT COUNT]", label:"Projects" },
+    { value:"[CERTIFICATION COUNT]", label:"Certifications" },
+    { value:"01", label:"B.E. AI & Data Science" }
+  ],
+  about: "I am a final-year B.E. Artificial Intelligence and Data Science student with a strong interest in Artificial Intelligence, Machine Learning, Data Science and software development. I enjoy transforming ideas into practical applications and exploring how data and intelligent systems can solve real-world problems.",
+  highlights: ["Final Year B.E. AI & Data Science","Artificial Intelligence","Machine Learning","Data Science","Python Development","Web Development","Problem Solving"],
+  profile: [
+    ["Name","OM VILAS SHINDE"],["Degree","B.E. Artificial Intelligence & Data Science"],["Year","2027 (Final Year)"],
+    ["College","NDMVP's K.B.T. College of Engineering, Nashik"],["Location","Nashik, Maharashtra, India"],
+    ["Email","shindeom.info@gmail.com"],["Availability","Open to Opportunities"]
+  ],
+  education: [{ degree:"B.E. Artificial Intelligence & Data Science", institution:"NDMVP's K.B.T. College of Engineering, Nashik / Savitribai Phule Pune University", duration:"2023 – 2027", status:"Final Year",
+    areas:["Artificial Intelligence","Machine Learning","Data Science","Database Management","Computer Networks","Operating Systems","Data Structures","Web Development"] }],
+  skills: [
+    { category:"Programming", icon:"</>", desc:"Core languages", items:["Python","JavaScript","C/C++","SQL","PL/SQL","NoSQL"] },
+    { category:"AI / Machine Learning", icon:"◈", desc:"Intelligent systems", items:["Machine Learning","Deep Learning","Computer Vision","Natural Language Processing","Data Analysis","Predictive Modeling"] },
+    { category:"Data Science", icon:"∑", desc:"Analysis & visualisation", items:["NumPy","Pandas","Matplotlib","Seaborn","Scikit-learn"] },
+    { category:"Web Development", icon:"◧", desc:"Front-end foundations", items:["HTML","CSS","JavaScript"] },
+    { category:"Databases", icon:"≡", desc:"Data storage & querying", items:["MySQL","SQL","PL/SQL","NoSQL","MongoDB"] },
+    { category:"Tools", icon:"⚙", desc:"Everyday workflow", items:["Git","GitHub","Jupyter Notebook","VS Code","MySQL Workbench","SQL Server Management Studio","Google Colab"] }
+  ],
+  focusAreas: ["AI & ML","Data Science","Programming","Web Development","Databases"],
+  technologies: ["face-api.js","TensorFlow.js","WebRTC","PeerJS","Web Crypto API","IndexedDB","Chart.js","jsQR","QRCode.js","Google Apps Script","GitHub Pages","OpenCV"],
+  experience: [{ company:"SOFTCROWD TECHNOLOGIES PVT. LTD", role:"Data Science Intern", period:"[START DATE] – [END DATE]", location:"[LOCATION]",
+    points:["[RESPONSIBILITY]","[RESPONSIBILITY]","[RESPONSIBILITY]"] }],
+  experienceFallback: "Currently building practical experience through academic, personal and open-source projects.",
+  certifications: [], // {name, org, date, id, link}
+  achievements: [],   // ["Achievement text"]
+  githubStats: [],    // e.g. [{value:"12", label:"Repositories"}] - fill manually
+  githubIntro: "Explore my projects, experiments and development work on GitHub.",
+  footerTagline: "Building intelligent solutions with code, data and creativity."
+};
+
+</script><script>
+// ===== ADD PROJECTS HERE (only this file) =====
+// categories: "AI / ML","Data Science","Computer Vision","Web Development","Full Stack","Other"
+const projects = [
+ { id:1, title:"Smart Hybrid Face + QR Attendance System", categories:["Computer Vision","AI / ML","Full Stack"],
+   shortDescription:"A hybrid attendance system combining face recognition and QR-based attendance.",
+   description:"A hybrid attendance system combining face recognition and QR-based attendance to provide a practical automated attendance solution.",
+   technologies:["Python","OpenCV","Face Recognition","QR Code","Flask","JavaScript","Google Sheets API"], // confirm these
+   github:"", liveDemo:"", coverImage:"assets/projects/project-01/cover.jpg",
+   images:["assets/projects/project-01/image-01.jpg","assets/projects/project-01/image-02.jpg","assets/projects/project-01/image-03.jpg"],
+   features:["Face recognition attendance","QR-based attendance","Hybrid mode","More details to be added"] },
+ { id:2, title:"FaceAttend PRO — AI Hybrid Attendance System", categories:["Computer Vision","AI / ML","Web Development"],
+   shortDescription:"Browser-based face + QR attendance with a live dashboard, hosted free on GitHub Pages.",
+   description:"A browser-based hybrid attendance system using face recognition and QR scanning, with a live dashboard and records stored in Google Sheets via Google Apps Script.",
+   technologies:["face-api.js","TensorFlow.js","jsQR","QRCode.js","Chart.js","Google Sheets","Google Apps Script","GitHub Pages","JavaScript","HTML","CSS"],
+   github:"", liveDemo:"", coverImage:"assets/projects/project-02/cover.jpg",
+   images:["assets/projects/project-02/image-01.jpg","assets/projects/project-02/image-02.jpg"],
+   features:["Face Recognition","QR Attendance","Hybrid Attendance","Live Dashboard","Attendance Records","Charts","Responsive Interface"] },
+ { id:3, title:"VaultChat — Encrypted P2P Chat", categories:["Web Development","Other"],
+   shortDescription:"Peer-to-peer encrypted messaging running entirely in the browser.",
+   description:"Browser-based peer-to-peer chat using WebRTC DataChannels with PeerJS signaling, ECDH P-384 key exchange and AES-GCM 256-bit encryption via the Web Crypto API. Messages are stored in IndexedDB; hosted on GitHub Pages.",
+   technologies:["WebRTC","PeerJS","Web Crypto API","ECDH P-384","AES-GCM 256","IndexedDB","qrcodejs","GitHub Pages"],
+   github:"", liveDemo:"", coverImage:"assets/projects/project-03/cover.jpg",
+   images:["assets/projects/project-03/image-01.jpg","assets/projects/project-03/image-02.jpg"],
+   features:["End-to-end encryption","Peer-to-peer transport","QR code pairing","Local message storage"] },
+ { id:4, title:"Drowsiness Detection System", categories:["Computer Vision","AI / ML"],
+   shortDescription:"Computer vision based system designed to detect signs of driver or user drowsiness.",
+   description:"Computer vision based system designed to detect signs of driver or user drowsiness.",
+   technologies:["Python","OpenCV","[ADD ACTUAL LIBRARIES]"], github:"", liveDemo:"", coverImage:"assets/projects/project-04/cover.jpg", images:[], features:["Details to be added"] },
+ { id:5, title:"Project 05", categories:["Other"], shortDescription:"Project details to be added", description:"Project details to be added", technologies:[], github:"", liveDemo:"", coverImage:"assets/projects/project-05/cover.jpg", images:[], features:[] },
+ { id:6, title:"Project 06", categories:["Other"], shortDescription:"Project details to be added", description:"Project details to be added", technologies:[], github:"", liveDemo:"", coverImage:"assets/projects/project-06/cover.jpg", images:[], features:[] }
+];
+const projectFilters = ["All","AI / ML","Data Science","Computer Vision","Web Development","Full Stack","Other"];
+
+</script><script>
+// Project modal + lightbox
+const Gallery = (() => {
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  let cur = null, idx = 0, imgs = [], lbOpen = false, lastFocus = null;
+  function imgTag(src, alt, cls=""){ const i=new Image(); i.src=src; i.alt=alt; i.loading="lazy"; i.className=cls;
+    i.onerror=()=>{ const d=document.createElement("div"); d.className="ph "+cls; d.textContent="PROJECT IMAGE"; i.replaceWith(d); }; return i; }
+  function show(){
+    const stage=$("#mStage"); stage.innerHTML="";
+    if(!imgs.length){ stage.innerHTML='<div class="ph">PROJECT IMAGE</div>'; $("#mCount").textContent=""; $("#mThumbs").innerHTML=""; return; }
+    const im=imgTag(imgs[idx], cur.title+" screenshot "+(idx+1)); im.onclick=openLb; stage.appendChild(im);
+    $("#mCount").textContent=(idx+1)+" / "+imgs.length;
+    const t=$("#mThumbs"); t.innerHTML="";
+    imgs.forEach((s,i)=>{ const b=document.createElement("button"); b.setAttribute("aria-label","Image "+(i+1)); b.className=i===idx?"on":"";
+      b.appendChild(imgTag(s,"")); b.onclick=()=>{idx=i;show();}; t.appendChild(b); });
+    if(lbOpen) $("#lbImg").src=imgs[idx];
+  }
+  const step = d => { if(imgs.length){ idx=(idx+d+imgs.length)%imgs.length; show(); } };
+  function open(id){
+    cur=projects.find(p=>p.id===id); if(!cur) return; lastFocus=document.activeElement;
+    imgs=[cur.coverImage,...cur.images]; idx=0;
+    $("#mTitle").textContent=cur.title; $("#mCat").textContent=cur.categories.join(" · ");
+    $("#mDesc").textContent=cur.description;
+    $("#mTech").innerHTML=cur.technologies.map(t=>`<span class="tag">${esc(t)}</span>`).join("");
+    $("#mFeat").innerHTML=cur.features.map(f=>`<li>${esc(f)}</li>`).join("")||"<li>Details to be added</li>";
+    const l=$("#mLinks"); l.innerHTML="";
+    [["GitHub",cur.github],["Live Demo",cur.liveDemo]].forEach(([n,u])=>{
+      const a=document.createElement(u?"a":"span"); a.className="btn "+(u?"btn-p":"btn-g disabled"); a.textContent=u?n:n+" (to be added)";
+      if(u){a.href=u;a.target="_blank";a.rel="noopener";} l.appendChild(a); });
+    $("#modal").classList.add("open"); document.body.style.overflow="hidden"; show(); $("#mClose").focus();
+  }
+  function close(){ $("#modal").classList.remove("open"); document.body.style.overflow=""; lastFocus&&lastFocus.focus(); }
+  function openLb(){ if(!imgs.length) return; lbOpen=true; $("#lbImg").src=imgs[idx]; $("#lightbox").classList.add("open"); }
+  function closeLb(){ lbOpen=false; $("#lightbox").classList.remove("open"); }
+  document.addEventListener("DOMContentLoaded",()=>{
+    $("#mClose").onclick=close; $("#mPrev").onclick=()=>step(-1); $("#mNext").onclick=()=>step(1);
+    $("#modal").addEventListener("click",e=>{ if(e.target.id==="modal") close(); });
+    $("#lightbox").addEventListener("click",e=>{ if(e.target.id!=="lbPrev"&&e.target.id!=="lbNext") closeLb(); });
+    $("#lbPrev").onclick=()=>step(-1); $("#lbNext").onclick=()=>step(1);
+  });
+  document.addEventListener("keydown",e=>{
+    if(!$("#modal").classList.contains("open")) return;
+    if(e.key==="Escape") lbOpen?closeLb():close();
+    if(e.key==="ArrowLeft") step(-1);
+    if(e.key==="ArrowRight") step(1);
+  });
+  return { open, imgTag, esc };
+})();
+
+</script><script>
+(() => {
+const C = portfolioConfig, $ = (s,r=document)=>r.querySelector(s), $$ = (s,r=document)=>[...r.querySelectorAll(s)];
+const esc = Gallery.esc, ok = v => v && !/^\[.*\]$/.test(v);
+const html = (el, h) => { el.innerHTML = h; };
+const tags = a => a.map(t=>`<span class="tag">${esc(t)}</span>`).join("");
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Theme
+const root = document.documentElement;
+try { root.dataset.theme = localStorage.getItem("theme") || "dark"; } catch(e){}
+$("#theme").onclick = () => { root.dataset.theme = root.dataset.theme==="dark"?"light":"dark"; try{localStorage.setItem("theme",root.dataset.theme);}catch(e){} };
+
+// Nav
+const links = [["home","Home"],["about","About"],["skills","Skills"],["projects","Projects"],["experience","Experience"],["education","Education"],["contact","Contact"]];
+html($("#menu"), links.map(([id,n])=>`<li><a href="#${id}" data-nav="${id}">${n}</a></li>`).join(""));
+$("#logo").textContent = C.shortName; document.title = `${C.name} | AI & Data Science Student | Developer`;
+const burger = $("#burger"), menu = $("#menu");
+burger.onclick = () => { const o = menu.classList.toggle("open"); burger.setAttribute("aria-expanded", o); };
+$$("#menu a").forEach(a => a.addEventListener("click", () => { menu.classList.remove("open"); burger.setAttribute("aria-expanded", false); }));
+addEventListener("scroll", () => { $("#nav").classList.toggle("solid", scrollY>30); $("#top").classList.toggle("show", scrollY>500); }, {passive:true});
+const navObs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ $$("[data-nav]").forEach(a=>a.classList.toggle("active", a.dataset.nav===e.target.id)); }}), {rootMargin:"-45% 0px -50% 0px"});
+links.forEach(([id])=>navObs.observe($("#"+id)));
+$("#top").onclick = () => scrollTo({top:0, behavior: reduce?"auto":"smooth"});
+
+// Hero
+$("#hLabel").textContent = C.hero.label;
+html($("#hTitle"), C.hero.lines.map((l,i)=>`<span class="line" style="--d:${i*.15}s">${esc(l)}</span>`).join(""));
+$("#hText").textContent = C.hero.text;
+html($("#stats"), C.stats.map(s=>`<div class="stat"><b>${esc(s.value)}</b><span>${esc(s.label)}</span></div>`).join(""));
+$("#termText").textContent = `> whoami\n${C.name}\n\n> education\nB.E. AI & Data Science (2023–2027)\n\n> focus\n${C.focusAreas.join(", ")}\n\n> status\nOpen to Opportunities_`;
+let ri = 0; const rot = $("#rotator");
+const tick = () => { rot.textContent = C.rotatingTitles[ri++ % C.rotatingTitles.length]; };
+tick(); if(!reduce) setInterval(tick, 2400);
+
+// Links
+const ghRepos = C.github.replace(/\/$/,"") + "?tab=repositories";
+$$("[data-link]").forEach(a => { const k=a.dataset.link, u = k==="githubRepos"?(ok(C.github)?ghRepos:""):C[k];
+  if(ok(u)) a.href=u; else a.style.display="none"; });
+
+// Resume (shows note if file missing)
+let resumeOk = false;
+fetch(C.resume, {method:"HEAD"}).then(r=>{ resumeOk = r.ok; }).catch(()=>{}).finally(()=>{});
+$$("[data-resume]").forEach(a => { a.href = C.resume;
+  a.addEventListener("click", async e => { try { const r = await fetch(C.resume,{method:"HEAD"}); if(!r.ok) throw 0; } catch(_) { if(location.protocol!=="file:"){ e.preventDefault(); $("#resNote").hidden=false; $("#resume").scrollIntoView({behavior:"smooth"}); } } }); });
+$("#navResume").href = "#resume";
+
+// About
+$("#aboutText").textContent = C.about; html($("#highlights"), tags(C.highlights));
+html($("#profile"), C.profile.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join(""));
+const ph = $("#photo"); const pi = new Image(); pi.src=C.profileImage; pi.alt=C.name+" profile photo"; pi.loading="lazy";
+pi.onload=()=>ph.appendChild(pi); ph.innerHTML = `<div class="ph">ADD PHOTO<br><small>${esc(C.profileImage)}</small></div>`; pi.onload=()=>{ph.innerHTML="";ph.appendChild(pi);};
+
+// Education / Skills
+html($("#eduList"), C.education.map(e=>`<article class="card tl"><span class="badge">${esc(e.status)}</span><h3>${esc(e.degree)}</h3><p class="muted">${esc(e.institution)}</p><p class="period">${esc(e.duration)}</p><h4>Relevant Areas</h4><div class="tags">${tags(e.areas)}</div></article>`).join(""));
+html($("#skillGrid"), C.skills.map(s=>`<article class="card skill"><div class="ico">${esc(s.icon)}</div><h3>${esc(s.category)}</h3><p class="muted">${esc(s.desc)}</p><div class="tags">${tags(s.items)}</div></article>`).join(""));
+html($("#focus"), tags(C.focusAreas)); html($("#techs"), tags(C.technologies));
+
+// Projects
+let active = "All"; const grid = $("#pGrid");
+html($("#filters"), projectFilters.map(f=>`<button class="chip${f==="All"?" on":""}" data-f="${esc(f)}">${esc(f)}</button>`).join(""));
+function renderProjects(){
+  const list = projects.filter(p => active==="All" || p.categories.includes(active));
+  $("#count").textContent = `Showing ${list.length} project${list.length===1?"":"s"}`;
+  grid.innerHTML = "";
+  list.forEach((p,i) => {
+    const c = document.createElement("article"); c.className="card pcard pop"; c.style.animationDelay = (i*60)+"ms";
+    const img = document.createElement("div"); img.className="cover"; img.appendChild(Gallery.imgTag(p.coverImage, p.title+" cover"));
+    c.appendChild(img);
+    const b = document.createElement("div"); b.className="pbody";
+    b.innerHTML = `<p class="eyebrow">${esc(p.categories.join(" · "))}</p><h3>${esc(p.title)}</h3><p class="muted">${esc(p.shortDescription)}</p><div class="tags">${tags(p.technologies.slice(0,4))}</div>`;
+    const btn = document.createElement("button"); btn.className="btn btn-g sm"; btn.textContent="View Project"; btn.onclick = () => Gallery.open(p.id);
+    b.appendChild(btn); c.appendChild(b); grid.appendChild(c);
+  });
+}
+$("#filters").addEventListener("click", e => { const b=e.target.closest(".chip"); if(!b) return; active=b.dataset.f; $$(".chip").forEach(x=>x.classList.toggle("on",x===b)); renderProjects(); });
+renderProjects();
+
+// Experience / certs / achievements / github
+html($("#expList"), C.experience.some(e=>ok(e.period))||C.experience.some(e=>ok(e.company)) ? C.experience.map(e=>`<article class="card tl"><span class="badge">INTERNSHIP</span><h3>${esc(e.role)}</h3><p class="muted">${esc(e.company)} · ${esc(e.location)}</p><p class="period">${esc(e.period)}</p><ul class="feat">${e.points.map(p=>`<li>${esc(p)}</li>`).join("")}</ul></article>`).join("") : `<p class="muted">${esc(C.experienceFallback)}</p>`);
+html($("#certList"), C.certifications.length ? C.certifications.map(c=>`<article class="card"><h3>${esc(c.name||"Certification Name")}</h3><p class="muted">${esc(c.org||"Issuing Organization")} · ${esc(c.date||"Date")}</p><p class="muted">Credential ID: ${esc(c.id||"Details to be added")}</p>${ok(c.link)?`<a class="btn btn-g sm" href="${esc(c.link)}" target="_blank" rel="noopener">View Certificate</a>`:""}</article>`).join("") : `<article class="card"><h3>Certification Name</h3><p class="muted">Issuing Organization · Date</p><p class="muted">Credential ID: Details to be added</p></article>`);
+html($("#achList"), C.achievements.length ? `<ul class="feat">${C.achievements.map(a=>`<li>${esc(a)}</li>`).join("")}</ul>` : `<p class="muted">Achievements will be added.</p>`);
+$("#ghText").textContent = C.githubIntro;
+html($("#ghStats"), C.githubStats.map(s=>`<div class="stat"><b>${esc(s.value)}</b><span>${esc(s.label)}</span></div>`).join(""));
+
+// Contact
+html($("#cInfo"), `<h3>${esc(C.name)}</h3><p class="muted">${esc(C.location)}</p>
+ <p><a href="mailto:${esc(C.email)}">${esc(C.email)}</a> <button class="btn btn-g sm" id="copy">Copy Email</button></p>
+ <p><a href="tel:${esc(C.phone.replace(/\s/g,""))}">${esc(C.phone)}</a></p>`);
+$("#copy").onclick = async () => { try { await navigator.clipboard.writeText(C.email); } catch(e){ const t=document.createElement("textarea"); t.value=C.email; document.body.appendChild(t); t.select(); document.execCommand("copy"); t.remove(); } toast("Email copied!"); };
+function toast(m){ const t=$("#toast"); t.textContent=m; t.classList.add("show"); setTimeout(()=>t.classList.remove("show"),2000); }
+$("#form").addEventListener("submit", e => { e.preventDefault(); const f=e.target, d=Object.fromEntries(new FormData(f));
+  if(!d.name.trim()||!d.subject.trim()||!d.message.trim()||!/^\S+@\S+\.\S+$/.test(d.email)){ $("#fErr").textContent="Please fill in name, a valid email, subject and message."; return; }
+  $("#fErr").textContent="";
+  const body = `Name: ${d.name}\nEmail: ${d.email}\nPhone: ${d.phone}\nMessage:\n${d.message}`;
+  location.href = `mailto:${C.email}?subject=${encodeURIComponent("Portfolio Contact — "+d.subject)}&body=${encodeURIComponent(body)}`; });
+
+// Footer + socials
+$("#fName").textContent = C.name; $("#fTag").textContent = C.footerTagline;
+html($("#fLinks"), links.filter(l=>l[0]!=="education").map(([id,n])=>`<li><a href="#${id}">${n}</a></li>`).join(""));
+const soc = {GitHub:C.github, LinkedIn:C.linkedin, Instagram:C.social.instagram, Behance:C.social.behance, LeetCode:C.social.leetcode, Kaggle:C.social.kaggle};
+html($("#fSocial"), Object.entries(soc).filter(([,u])=>ok(u)).map(([n,u])=>`<a class="tag" href="${esc(u)}" target="_blank" rel="noopener">${n}</a>`).join(""));
+
+// Reveal
+const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target);} }), {threshold:.08});
+$$(".reveal").forEach(el=>io.observe(el));
+
+// Neural network canvas
+const cv = $("#net"), g = cv.getContext("2d"); let W,H,pts=[];
+function size(){ W=cv.width=cv.offsetWidth; H=cv.height=cv.offsetHeight; pts=Array.from({length:Math.min(60,W/22|0)},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3})); }
+function draw(){ g.clearRect(0,0,W,H); const col = getComputedStyle(root).getPropertyValue("--accent").trim()||"#22d3ee"; g.fillStyle=col; g.strokeStyle=col;
+  pts.forEach((p,i)=>{ if(!reduce){p.x+=p.vx;p.y+=p.vy; if(p.x<0||p.x>W)p.vx*=-1; if(p.y<0||p.y>H)p.vy*=-1;}
+   g.globalAlpha=.6; g.beginPath(); g.arc(p.x,p.y,1.6,0,7); g.fill();
+   for(let j=i+1;j<pts.length;j++){ const q=pts[j], d=Math.hypot(p.x-q.x,p.y-q.y); if(d<120){ g.globalAlpha=.18*(1-d/120); g.beginPath(); g.moveTo(p.x,p.y); g.lineTo(q.x,q.y); g.stroke(); } } });
+  if(!reduce && !document.hidden) requestAnimationFrame(draw); }
+size(); draw(); addEventListener("resize", ()=>{ size(); if(reduce) draw(); });
+document.addEventListener("visibilitychange", ()=>{ if(!document.hidden && !reduce) draw(); });
+})();
+
+</script>
 </body></html>
